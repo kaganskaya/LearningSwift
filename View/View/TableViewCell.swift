@@ -19,6 +19,21 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var backgroundImage: UIImageView!
     
     
+    func fillImageView(url:String, imageView:UIImageView){
+        
+        let myUrl = URL(string: url)
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: myUrl!)
+            
+            DispatchQueue.main.async {
+                
+                imageView.image = UIImage(data: data!)
+                
+            }
+        }
+        
+    }
     
    
 }

@@ -46,18 +46,8 @@ class ViewController: UIViewController, UITableViewDataSource , UITableViewDeleg
         let object = places[indexPath.row]
         
             cell?.lName.text = object["name"]
-  
-        let url = URL(string: object["link"]!)
         
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            
-                DispatchQueue.main.async {
-                    
-                    cell!.backgroundImage.image = UIImage(data: data!)
-                
-                }
-            }
+            cell!.fillImageView(url: object["link"]!, imageView: (cell?.backgroundImage)!)
     
         return cell!
     }

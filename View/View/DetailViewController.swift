@@ -10,32 +10,60 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var reviewsView: UITableView!
+    
+    @IBOutlet weak var descriptionText: UITextView!
+    
+    @IBOutlet weak var text: UIView!
+    
+    @IBAction func revBut(_ sender: UIButton) {
+        self.text.isHidden = true
+         self.reviewsView.isHidden = false
+        
+    }
+    @IBAction func descBut(_ sender: UIButton) {
+        
+        self.text.isHidden = false
+        
+        self.reviewsView.isHidden = true
+            
+    }
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var LabelName: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let object = places[i]
-
-        let url = URL(string: object["link"]!)
         
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            
-            DispatchQueue.main.async {
-                
-                self.imageView.image = UIImage(data: data!)
-                
-            }
-        }
+            fillImageView(url: object["link"]!, imageView: imageView)
         
-        LabelName.text = object["name"]
+            LabelName.text = object["name"]
+        
+         self.reviewsView.isHidden = true
         
     }
     
 
+    func fillImageView(url:String, imageView:UIImageView){
+        
+         let myUrl = URL(string: url)
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: myUrl!)
+            
+            DispatchQueue.main.async {
+                
+                imageView.image = UIImage(data: data!)
+                
+            }
+        }
+        
+        
+        
+    }
     /*
     // MARK: - Navigation
 
