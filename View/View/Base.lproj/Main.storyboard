@@ -92,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2381" y="-42"/>
+            <point key="canvasLocation" x="-2623" y="-42"/>
         </scene>
         <!--DetailView-->
         <scene sceneID="GRS-kX-M5l">
@@ -305,7 +305,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Exi-aI-DQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1110" y="-44"/>
+            <point key="canvasLocation" x="-1343" y="-42"/>
+        </scene>
+        <!--login-->
+        <scene sceneID="HiP-9R-fES">
+            <objects>
+                <viewController id="fLr-Yi-wST" userLabel="login" customClass="LoginConroller" customModule="View" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uhR-Zk-FX9" customClass="MyLoginView" customModule="View" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="o81-7h-iMz"/>
+                    </view>
+                    <connections>
+                        <outlet property="loginView" destination="uhR-Zk-FX9" id="sYK-Un-DLi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cpq-rn-fDR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4174" y="-52"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xMp-31-IDK">
@@ -332,7 +350,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IwN-NS-qcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3057" y="-42"/>
+            <point key="canvasLocation" x="-3355" y="-42"/>
         </scene>
     </scenes>
     <resources>
