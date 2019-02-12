@@ -14,10 +14,11 @@ class LoginConroller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginView.blur()
+       
+       // loginView.blur()
         loginView.show()
         
-        
+       // loginView.animation() 
         
         
     }

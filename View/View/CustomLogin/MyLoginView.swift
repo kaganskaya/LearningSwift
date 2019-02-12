@@ -13,20 +13,23 @@ import UIKit
 @IBDesignable
 class MyLoginView: UIView {
     
+    
+    @IBOutlet weak var backgrView: UIImageView!
+    
+    @IBOutlet weak var formView: UIView!
+    
+    @IBOutlet var myView: UIView!
+    
+    let backGroundArray = [UIImage(named: "Image"),UIImage(named:"burg")]
+   
+    private var idx: Int = 0
+    
+    
     override func prepareForInterfaceBuilder(){
         super.prepareForInterfaceBuilder()
         
         setup()
     }
-   
-    
-    @IBOutlet weak var backgrView: UIImageView!
-    @IBOutlet weak var formView: UIView!
-    
-    @IBOutlet var myView: UIView!
-    
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +41,8 @@ class MyLoginView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
+    
+    
     
     func setup() {
         
@@ -52,21 +57,53 @@ class MyLoginView: UIView {
     
     }
     
-    func blur()
-    {
+    
+    @objc func changeBackground(){
+        
+        if idx == backGroundArray.count-1{
+            idx = 0
+        }
+        else{
+            idx+=1
+        }
+        
+        let toImage = backGroundArray[idx];
+        
+        UIView.transition(with: self.backgrView, duration: 6, options: .transitionCrossDissolve, animations: {self.backgrView.image = toImage}, completion: nil)
         
         
+    }
+    
+    func setupImage(){
         
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.dark)) as UIVisualEffectView
+        
+            visualEffectView.frame = self.formView.frame
+        
+            visualEffectView.alpha = 0.8
+        
+            backgrView.image = UIImage(named: "burg")
+        
+            backgrView.addSubview(visualEffectView)
+        
+
+        Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(changeBackground), userInfo: nil, repeats: true)
+        
+    }
+    
+    
+    func blur(){
         
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         
-                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = backgrView.bounds
-
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-        backgrView.addSubview(blurEffectView)
-
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
+            blurEffectView.frame = backgrView.bounds
+
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+            backgrView.addSubview(blurEffectView)
+   
     }
     
     func show(){
@@ -75,15 +112,11 @@ class MyLoginView: UIView {
         
         formView.isHidden = false
         
-       backgrView.isHidden = false
-        
-        
+        backgrView.isHidden = false
+
+        setupImage()
     }
     
-    
-    
-    
   
-   
 
 }
