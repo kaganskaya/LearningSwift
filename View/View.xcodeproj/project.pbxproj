@@ -7,8 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6768CB24221067FD009206A7 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6768CB23221067FD009206A7 /* Place.swift */; };
+		6725C75C221319D100621B2B /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6725C75B221319D100621B2B /* Business.swift */; };
+		6725C76222131CB300621B2B /* GlobalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6725C76122131CB300621B2B /* GlobalProvider.swift */; };
 		6768CB262210BB54009206A7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6768CB252210BB54009206A7 /* DetailViewController.swift */; };
+		678374362213631300C5852F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678374352213631300C5852F /* Router.swift */; };
+		6783743B2213644C00C5852F /* BaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783743A2213644C00C5852F /* BaseContract.swift */; };
+		678374412213651100C5852F /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678374402213651100C5852F /* DetailView.storyboard */; };
+		67837445221365EC00C5852F /* MasterCreatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67837444221365EC00C5852F /* MasterCreatorImpl.swift */; };
+		678374482213666C00C5852F /* MasterPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678374472213666C00C5852F /* MasterPresenterImpl.swift */; };
+		6783744B2213670600C5852F /* MasterInteratorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783744A2213670600C5852F /* MasterInteratorImpl.swift */; };
+		6783744E2213673000C5852F /* MasterContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783744D2213673000C5852F /* MasterContract.swift */; };
+		67837462221368A500C5852F /* DetailCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67837451221368A500C5852F /* DetailCreator.swift */; };
+		67837464221368A500C5852F /* DetailPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67837455221368A500C5852F /* DetailPresenterImpl.swift */; };
+		6783746A221368A500C5852F /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783745D221368A500C5852F /* DetailInteractor.swift */; };
+		6783747222136A4C00C5852F /* DetailContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783747122136A4C00C5852F /* DetailContract.swift */; };
+		67A8FC21221B1A990087064B /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A8FC20221B1A990087064B /* ReviewCell.swift */; };
 		67E01DCA22119F5F0055769F /* MyLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67E01DC922119F5F0055769F /* MyLoginView.xib */; };
 		67E01DCC2211A8240055769F /* MyLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E01DCB2211A8240055769F /* MyLoginView.swift */; };
 		67E01DCE2211AE100055769F /* LoginConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E01DCD2211AE100055769F /* LoginConroller.swift */; };
@@ -18,11 +31,31 @@
 		67F8567B2210420000A20C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67F8567A2210420000A20C57 /* Assets.xcassets */; };
 		67F8567E2210420000A20C57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F8567C2210420000A20C57 /* LaunchScreen.storyboard */; };
 		67F85686221062F900A20C57 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85685221062F900A20C57 /* TableViewCell.swift */; };
+		67FE4A17221B0D9B00A1C8B1 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FE4A16221B0D9A00A1C8B1 /* Reviews.swift */; };
+		67FEF7472215D4BA007347B6 /* LocationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FEF7462215D4BA007347B6 /* LocationUtil.swift */; };
+		67FEF7492215FC63007347B6 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FEF7482215FC63007347B6 /* Repository.swift */; };
+		FA05ECFF771D3F4D7754640B /* Pods_View.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47259DF8D80C48A7EFBF3BA6 /* Pods_View.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6768CB23221067FD009206A7 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		3BB10FED672593B719C3F45D /* Pods-View.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-View.release.xcconfig"; path = "Pods/Target Support Files/Pods-View/Pods-View.release.xcconfig"; sourceTree = "<group>"; };
+		3E2198F100AF3D3786261C87 /* Pods-View.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-View.debug.xcconfig"; path = "Pods/Target Support Files/Pods-View/Pods-View.debug.xcconfig"; sourceTree = "<group>"; };
+		47259DF8D80C48A7EFBF3BA6 /* Pods_View.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_View.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6725C75B221319D100621B2B /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		6725C76122131CB300621B2B /* GlobalProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalProvider.swift; sourceTree = "<group>"; };
 		6768CB252210BB54009206A7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		678374352213631300C5852F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		6783743A2213644C00C5852F /* BaseContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContract.swift; sourceTree = "<group>"; };
+		678374402213651100C5852F /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
+		67837444221365EC00C5852F /* MasterCreatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCreatorImpl.swift; sourceTree = "<group>"; };
+		678374472213666C00C5852F /* MasterPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterPresenterImpl.swift; sourceTree = "<group>"; };
+		6783744A2213670600C5852F /* MasterInteratorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterInteratorImpl.swift; sourceTree = "<group>"; };
+		6783744D2213673000C5852F /* MasterContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterContract.swift; sourceTree = "<group>"; };
+		67837451221368A500C5852F /* DetailCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCreator.swift; sourceTree = "<group>"; };
+		67837455221368A500C5852F /* DetailPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPresenterImpl.swift; sourceTree = "<group>"; };
+		6783745D221368A500C5852F /* DetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		6783747122136A4C00C5852F /* DetailContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContract.swift; sourceTree = "<group>"; };
+		67A8FC20221B1A990087064B /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		67E01DC922119F5F0055769F /* MyLoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyLoginView.xib; sourceTree = "<group>"; };
 		67E01DCB2211A8240055769F /* MyLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginView.swift; sourceTree = "<group>"; };
 		67E01DCD2211AE100055769F /* LoginConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConroller.swift; sourceTree = "<group>"; };
@@ -34,6 +67,9 @@
 		67F8567D2210420000A20C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67F8567F2210420000A20C57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67F85685221062F900A20C57 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		67FE4A16221B0D9A00A1C8B1 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		67FEF7462215D4BA007347B6 /* LocationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationUtil.swift; sourceTree = "<group>"; };
+		67FEF7482215FC63007347B6 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,15 +77,187 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA05ECFF771D3F4D7754640B /* Pods_View.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6725C7592213197300621B2B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				67FE4A15221B0D8700A1C8B1 /* Reviews */,
+				6725C75A2213198000621B2B /* Places */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6725C75A2213198000621B2B /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				6725C75B221319D100621B2B /* Business.swift */,
+			);
+			path = Places;
+			sourceTree = "<group>";
+		};
+		67837434221362DC00C5852F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				678374352213631300C5852F /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		67837437221363D200C5852F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				6783744F221368A500C5852F /* Detail */,
+				6783743D2213647600C5852F /* Master */,
+				678374392213643B00C5852F /* Base */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		678374382213641100C5852F /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				67FEF7462215D4BA007347B6 /* LocationUtil.swift */,
+				6725C76122131CB300621B2B /* GlobalProvider.swift */,
+				67FEF7482215FC63007347B6 /* Repository.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		678374392213643B00C5852F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				6783743A2213644C00C5852F /* BaseContract.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		6783743D2213647600C5852F /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				6783744C2213672600C5852F /* Contract */,
+				67837449221366F100C5852F /* Interactor */,
+				678374462213664E00C5852F /* Presenter */,
+				67837443221365CC00C5852F /* Creator */,
+				67837442221365B700C5852F /* View */,
+			);
+			path = Master;
+			sourceTree = "<group>";
+		};
+		6783743E2213649200C5852F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				67F856732210420000A20C57 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		67837442221365B700C5852F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				67F856772210420000A20C57 /* Main.storyboard */,
+				67F856752210420000A20C57 /* ViewController.swift */,
+				67F85685221062F900A20C57 /* TableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		67837443221365CC00C5852F /* Creator */ = {
+			isa = PBXGroup;
+			children = (
+				67837444221365EC00C5852F /* MasterCreatorImpl.swift */,
+			);
+			path = Creator;
+			sourceTree = "<group>";
+		};
+		678374462213664E00C5852F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				678374472213666C00C5852F /* MasterPresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		67837449221366F100C5852F /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				6783744A2213670600C5852F /* MasterInteratorImpl.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		6783744C2213672600C5852F /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				6783744D2213673000C5852F /* MasterContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		6783744F221368A500C5852F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6783747022136A4C00C5852F /* Contract */,
+				67837450221368A500C5852F /* Creator */,
+				67837454221368A500C5852F /* Presenter */,
+				67837456221368A500C5852F /* View */,
+				6783745C221368A500C5852F /* Interactor */,
+			);
+			name = Detail;
+			path = Master/View/Detail;
+			sourceTree = "<group>";
+		};
+		67837450221368A500C5852F /* Creator */ = {
+			isa = PBXGroup;
+			children = (
+				67837451221368A500C5852F /* DetailCreator.swift */,
+			);
+			path = Creator;
+			sourceTree = "<group>";
+		};
+		67837454221368A500C5852F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				67837455221368A500C5852F /* DetailPresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		67837456221368A500C5852F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6768CB252210BB54009206A7 /* DetailViewController.swift */,
+				678374402213651100C5852F /* DetailView.storyboard */,
+				67A8FC20221B1A990087064B /* ReviewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6783745C221368A500C5852F /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				6783745D221368A500C5852F /* DetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		6783747022136A4C00C5852F /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				6783747122136A4C00C5852F /* DetailContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
 		67E01DC622119E730055769F /* CustomLogin */ = {
 			isa = PBXGroup;
 			children = (
+				67E01DCD2211AE100055769F /* LoginConroller.swift */,
 				67E01DC922119F5F0055769F /* MyLoginView.xib */,
 				67E01DCB2211A8240055769F /* MyLoginView.swift */,
 			);
@@ -61,6 +269,8 @@
 			children = (
 				67F856722210420000A20C57 /* View */,
 				67F856712210420000A20C57 /* Products */,
+				ADDA3DE700C3B64ED9C29BBF /* Pods */,
+				E36FA8315D28D30263BF9B24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,19 +285,42 @@
 		67F856722210420000A20C57 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6783743E2213649200C5852F /* Application */,
+				678374382213641100C5852F /* Providers */,
+				67837437221363D200C5852F /* Modules */,
+				67837434221362DC00C5852F /* Router */,
+				6725C7592213197300621B2B /* Models */,
 				67E01DC622119E730055769F /* CustomLogin */,
-				67F856732210420000A20C57 /* AppDelegate.swift */,
-				67F856752210420000A20C57 /* ViewController.swift */,
-				67F856772210420000A20C57 /* Main.storyboard */,
-				67E01DCD2211AE100055769F /* LoginConroller.swift */,
-				6768CB252210BB54009206A7 /* DetailViewController.swift */,
-				67F85685221062F900A20C57 /* TableViewCell.swift */,
-				6768CB23221067FD009206A7 /* Place.swift */,
 				67F8567A2210420000A20C57 /* Assets.xcassets */,
 				67F8567C2210420000A20C57 /* LaunchScreen.storyboard */,
 				67F8567F2210420000A20C57 /* Info.plist */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		67FE4A15221B0D8700A1C8B1 /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				67FE4A16221B0D9A00A1C8B1 /* Reviews.swift */,
+			);
+			path = Reviews;
+			sourceTree = "<group>";
+		};
+		ADDA3DE700C3B64ED9C29BBF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E2198F100AF3D3786261C87 /* Pods-View.debug.xcconfig */,
+				3BB10FED672593B719C3F45D /* Pods-View.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E36FA8315D28D30263BF9B24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				47259DF8D80C48A7EFBF3BA6 /* Pods_View.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,9 +330,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67F856822210420000A20C57 /* Build configuration list for PBXNativeTarget "View" */;
 			buildPhases = (
+				25825C6F12EA1737E3E8FFC5 /* [CP] Check Pods Manifest.lock */,
 				67F8566C2210420000A20C57 /* Sources */,
 				67F8566D2210420000A20C57 /* Frameworks */,
 				67F8566E2210420000A20C57 /* Resources */,
+				FD106EF4275AC245F95F176A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,24 +386,99 @@
 				67F8567E2210420000A20C57 /* LaunchScreen.storyboard in Resources */,
 				67F8567B2210420000A20C57 /* Assets.xcassets in Resources */,
 				67E01DCA22119F5F0055769F /* MyLoginView.xib in Resources */,
+				678374412213651100C5852F /* DetailView.storyboard in Resources */,
 				67F856792210420000A20C57 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		25825C6F12EA1737E3E8FFC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-View-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD106EF4275AC245F95F176A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-View/Pods-View-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/YelpAPI/YelpAPI.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YelpAPI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-View/Pods-View-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		67F8566C2210420000A20C57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6783747222136A4C00C5852F /* DetailContract.swift in Sources */,
+				67837445221365EC00C5852F /* MasterCreatorImpl.swift in Sources */,
+				6783746A221368A500C5852F /* DetailInteractor.swift in Sources */,
+				678374362213631300C5852F /* Router.swift in Sources */,
 				67E01DCC2211A8240055769F /* MyLoginView.swift in Sources */,
+				67FEF7492215FC63007347B6 /* Repository.swift in Sources */,
+				67FE4A17221B0D9B00A1C8B1 /* Reviews.swift in Sources */,
+				6783743B2213644C00C5852F /* BaseContract.swift in Sources */,
+				6725C76222131CB300621B2B /* GlobalProvider.swift in Sources */,
+				67837462221368A500C5852F /* DetailCreator.swift in Sources */,
 				67F85686221062F900A20C57 /* TableViewCell.swift in Sources */,
 				67F856762210420000A20C57 /* ViewController.swift in Sources */,
+				6725C75C221319D100621B2B /* Business.swift in Sources */,
+				6783744E2213673000C5852F /* MasterContract.swift in Sources */,
+				67FEF7472215D4BA007347B6 /* LocationUtil.swift in Sources */,
 				6768CB262210BB54009206A7 /* DetailViewController.swift in Sources */,
+				67837464221368A500C5852F /* DetailPresenterImpl.swift in Sources */,
+				6783744B2213670600C5852F /* MasterInteratorImpl.swift in Sources */,
 				67F856742210420000A20C57 /* AppDelegate.swift in Sources */,
 				67E01DCE2211AE100055769F /* LoginConroller.swift in Sources */,
-				6768CB24221067FD009206A7 /* Place.swift in Sources */,
+				678374482213666C00C5852F /* MasterPresenterImpl.swift in Sources */,
+				67A8FC21221B1A990087064B /* ReviewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +622,7 @@
 		};
 		67F856832210420000A20C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E2198F100AF3D3786261C87 /* Pods-View.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -330,6 +641,7 @@
 		};
 		67F856842210420000A20C57 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BB10FED672593B719C3F45D /* Pods-View.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

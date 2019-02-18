@@ -16,11 +16,14 @@ class MyLoginView: UIView {
     
     @IBOutlet weak var backgrView: UIImageView!
     
+    @IBOutlet weak var password: UILabel!
+    @IBOutlet weak var username: UILabel!
+    
     @IBOutlet weak var formView: UIView!
     
     @IBOutlet var myView: UIView!
     
-    let backGroundArray = [UIImage(named: "Image"),UIImage(named:"burg")]
+    let backGroundArray = [UIImage(named: "Image"),UIImage(named:"burg"),UIImage(named:"wog"),UIImage(named:"Shum")]
    
     private var idx: Int = 0
     
@@ -54,8 +57,17 @@ class MyLoginView: UIView {
         addSubview(myView)
         myView.frame = self.bounds
         myView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-    
+        formView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     }
+    
+    override var bounds: CGRect{
+        
+        didSet{
+            layer.allowsGroupOpacity = false
+        }
+    }
+        
+    
     
     
     @objc func changeBackground(){
@@ -69,7 +81,7 @@ class MyLoginView: UIView {
         
         let toImage = backGroundArray[idx];
         
-        UIView.transition(with: self.backgrView, duration: 6, options: .transitionCrossDissolve, animations: {self.backgrView.image = toImage}, completion: nil)
+        UIView.transition(with: self.backgrView, duration: 4, options: .transitionCrossDissolve, animations: {self.backgrView.image = toImage}, completion: nil)
         
         
     }
@@ -80,7 +92,7 @@ class MyLoginView: UIView {
         
             visualEffectView.frame = self.formView.frame
         
-            visualEffectView.alpha = 0.8
+            visualEffectView.alpha = 0.5
         
             backgrView.image = UIImage(named: "burg")
         

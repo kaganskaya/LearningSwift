@@ -7,48 +7,61 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-var i = 0
 
-
-class ViewController: UIViewController, UITableViewDataSource , UITableViewDelegate {
+class ViewController: UIViewController{
 
     
     @IBOutlet weak var tableViewData: UITableView!
     
+    var presenter: MasterPresenter!
+        
+    var business:[Business] = []
+    
+    var i = 0
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "My favorites"
-        
-        
+        presenter.onViewDidLoad()
+        presenter.findBusiness(city:"San Francisco")
+
         tableViewData.delegate = self
         tableViewData.dataSource = self
-            
-       
     }
+    
+}
+
+
+extension ViewController: MasterView, UITableViewDataSource , UITableViewDelegate {
+    
+    
+    func showBusiness(business: [Business]) {
+        self.business = business
+        self.tableViewData.reloadData()
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return places.count
-        
+        return business.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell",for: indexPath) as? TableViewCell
-
-        let object = places[indexPath.row]
         
-            cell?.lName.text = object["name"]
+            cell?.fillImageView(business: business[indexPath.row])
         
-            cell!.fillImageView(url: object["link"]!, imageView: (cell?.backgroundImage)!)
-    
         return cell!
     }
     
@@ -56,14 +69,12 @@ class ViewController: UIViewController, UITableViewDataSource , UITableViewDeleg
         
         i = indexPath.row
         
-        performSegue(withIdentifier:"detailSegue", sender: self)
-    }
+        
+         Router.presentDetailScreen(current: self, id: business[indexPath.row])    }
     
-   
+    
     
 }
-
-        
 
 
 
