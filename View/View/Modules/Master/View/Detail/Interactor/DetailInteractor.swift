@@ -24,7 +24,9 @@ class DetailInteractorImpl: DetailInteractor {
        return globalProvider.getReviews(id: id)
     }
     
-
-   
-   
+    func getDescription(link:String) -> Observable<String> {
+        
+        return globalProvider.getDescription(link:link)
+    }
+    
 }

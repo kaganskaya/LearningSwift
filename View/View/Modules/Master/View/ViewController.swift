@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SwiftSoup
 
 
 class ViewController: UIViewController{
@@ -28,13 +29,14 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         presenter.onViewDidLoad()
         presenter.findBusiness(city:"San Francisco")
-
+                
         tableViewData.delegate = self
         tableViewData.dataSource = self
     }
     
+    
+    
 }
-
 
 extension ViewController: MasterView, UITableViewDataSource , UITableViewDelegate {
     

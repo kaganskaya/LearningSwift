@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import Alamofire
 import MapKit
-
+import SwiftSoup
 
 
 class GlobalProvider {
@@ -146,4 +146,36 @@ class GlobalProvider {
     }
     
     
+    func getDescription(link:String) -> Observable<String> {
+        let url = URL(string:link)
+        //"https://www.yelp.com/biz/zazie-san-francisco?adjust_creative=ymikJqTE3CYzJ0i3sPsiGg&hrid=KVb9BBfCugoqVc9tiVtVQA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=ymikJqTE3CYzJ0i3sPsiGg"
+         return Observable<String>.create { observer -> Disposable in
+        do{
+            
+            let  html = try String.init(contentsOf: url!)
+            let doc: Document = try SwiftSoup.parse(html)
+            let links: Elements = try doc.select("div.from-biz-owner-content > p") // a with href 29-28
+            let linkHref = try links.first()
+                
+            observer.onNext((try linkHref?.text())!)
+            observer.onCompleted()
+            //print(linkHref)
+            
+        } catch Exception.Error(let type, let message){
+            print(message)
+            observer.onError(message as! Error)
+        } catch {
+            print("error")
+        }
+        
+    
+        return Disposables.create(with: {
+       
+        })
+    }
+    
+}
+
+    
+   
 }

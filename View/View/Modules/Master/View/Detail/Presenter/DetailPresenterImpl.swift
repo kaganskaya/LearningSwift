@@ -11,6 +11,7 @@ import RxSwift
 import MapKit
 
 class DetailPresenterImpl: DetailPresenter{
+    
   
     
 
@@ -41,7 +42,24 @@ class DetailPresenterImpl: DetailPresenter{
         
         
     }
+    
+
+    func getDescription(link: String) {
+        interactor.getDescription(link: link)
+            .subscribe(
+                onNext: { (n) in
+                        print(n)
+                self.view?.getDescription(string: n)
+            }, onError: { (error) in
+                print("-> \(error.localizedDescription)")
+            }, onCompleted: {
+                print(" onCompleted")
+            }, onDisposed: {
+                print("onDisposed")
+            }).disposed(by: disposeBag)
     }
+    
+}
 
 
     /*

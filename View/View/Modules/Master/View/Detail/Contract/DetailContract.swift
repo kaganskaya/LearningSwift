@@ -21,14 +21,15 @@ protocol DetailPresenter: class {
     var view: DetailView? { get set }
     var interactor: DetailInteractor! { get set }
     
-   func getDataById(id: String)
-
+    func getDescription(link:String)
+    func getDataById(id: String)
     func viewDidLoad()
 }
 
 protocol DetailInteractor: class {
     var  globalProvider: GlobalProvider! {get set}
-
+    
+    func getDescription(link:String) -> Observable<String>
     func getDataById(id: String) -> Observable<[Reviews]>
 }
 
@@ -39,4 +40,5 @@ protocol DetailView: class {
     
     func showReviews(review: [Reviews])
     
+    func getDescription(string:String) 
 }

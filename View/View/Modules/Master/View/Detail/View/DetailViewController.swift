@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
     var id:Business?
     var presenter: DetailPresenter!
     var reviews:[Reviews] = []
+    var desc:String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class DetailViewController: UIViewController {
         
         presenter.getDataById(id: (id?.id)!)
         
+        self.presenter.getDescription(link: (id?.url)!)
         self.reviewsView.isHidden = true
         
         reviewsView.delegate = self
@@ -78,18 +80,27 @@ extension DetailViewController:  DetailView , UITableViewDataSource , UITableVie
         self.reviewsView.reloadData()
         print(reviews.count)
     }
+    func getDescription(string:String) {
+        
+        self.desc = string
+        
+        self.reviewsView.reloadData()
+        
+
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return reviews.count
+        return 1//reviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let cell = tableView.dequeueReusableCell(withIdentifier: "revCell",for: indexPath) as? ReviewCell
         
-            cell?.fillReviewCell(text: reviews[indexPath.row].text)
+            //cell?.fillReviewCell(text: reviews[indexPath.row].text)
         
+        cell?.fillReviewCell(text: desc!)
         return cell!
     }
     
