@@ -14,16 +14,15 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var descriptionText: UITextView!
     
-    @IBOutlet weak var text: UIView!
     
     @IBAction func revBut(_ sender: UIButton) {
-        self.text.isHidden = true
+//        self.text.isHidden = true
          self.reviewsView.isHidden = false
         
     }
     @IBAction func descBut(_ sender: UIButton) {
         
-        self.text.isHidden = false
+      //  self.text.isHidden = false
         
         self.reviewsView.isHidden = true
             

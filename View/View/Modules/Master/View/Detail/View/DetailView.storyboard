@@ -79,7 +79,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COOL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Es-p0-SH1">
-                                                                    <rect key="frame" x="15" y="11" width="262.5" height="22"/>
+                                                                    <rect key="frame" x="15" y="11" width="337.5" height="22"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                     <color key="textColor" red="0.98498272490000005" green="1" blue="0.98440679679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -93,7 +93,7 @@
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstItem="9Es-p0-SH1" firstAttribute="width" secondItem="g2t-qD-f1L" secondAttribute="width" multiplier="0.7" id="d64-NK-BcL"/>
+                                                            <constraint firstItem="9Es-p0-SH1" firstAttribute="width" secondItem="g2t-qD-f1L" secondAttribute="width" multiplier="0.9" id="d64-NK-BcL"/>
                                                         </constraints>
                                                         <connections>
                                                             <outlet property="reviewLabel" destination="9Es-p0-SH1" id="2q6-WU-302"/>
@@ -147,10 +147,6 @@
                                                     <constraint firstAttribute="bottom" secondItem="Seq-kK-aeC" secondAttribute="bottom" id="zsb-Sh-rV7"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLL-JZ-EZe" userLabel="TextOption">
-                                                <rect key="frame" x="8" y="121" width="359" height="213"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -159,16 +155,12 @@
                                             <constraint firstItem="cHt-gJ-Bot" firstAttribute="height" secondItem="oHW-gZ-aha" secondAttribute="height" multiplier="0.1" id="AbN-CD-vyU"/>
                                             <constraint firstItem="cHt-gJ-Bot" firstAttribute="leading" secondItem="oHW-gZ-aha" secondAttribute="leading" id="BAJ-W2-ac7"/>
                                             <constraint firstItem="cHt-gJ-Bot" firstAttribute="top" secondItem="oHW-gZ-aha" secondAttribute="top" constant="8" id="FRZ-0B-0yl"/>
-                                            <constraint firstItem="uLL-JZ-EZe" firstAttribute="top" secondItem="cHt-gJ-Bot" secondAttribute="bottom" constant="8.3333333333333357" id="HTr-th-jwC"/>
                                             <constraint firstItem="xMX-Wh-FI6" firstAttribute="top" secondItem="cHt-gJ-Bot" secondAttribute="bottom" id="MSk-N2-UL6"/>
                                             <constraint firstAttribute="bottom" secondItem="c5T-zf-844" secondAttribute="bottom" id="Pyh-0j-OmK"/>
                                             <constraint firstItem="c5T-zf-844" firstAttribute="top" secondItem="cHt-gJ-Bot" secondAttribute="bottom" id="SHQ-a9-Ukd"/>
-                                            <constraint firstItem="uLL-JZ-EZe" firstAttribute="leading" secondItem="oHW-gZ-aha" secondAttribute="leading" constant="8" id="U9z-Xj-xtz"/>
-                                            <constraint firstAttribute="bottom" secondItem="uLL-JZ-EZe" secondAttribute="bottom" id="VwJ-jX-pPh"/>
                                             <constraint firstItem="cHt-gJ-Bot" firstAttribute="width" secondItem="oHW-gZ-aha" secondAttribute="width" id="dvb-0d-yBP"/>
                                             <constraint firstAttribute="trailing" secondItem="xMX-Wh-FI6" secondAttribute="trailing" id="eTl-0F-FfC"/>
                                             <constraint firstItem="xMX-Wh-FI6" firstAttribute="leading" secondItem="oHW-gZ-aha" secondAttribute="leading" id="iy4-hE-utx"/>
-                                            <constraint firstAttribute="trailing" secondItem="uLL-JZ-EZe" secondAttribute="trailing" constant="8" id="loB-rO-K1f"/>
                                             <constraint firstItem="c5T-zf-844" firstAttribute="leading" secondItem="oHW-gZ-aha" secondAttribute="leading" id="qga-Gb-qBG"/>
                                             <constraint firstAttribute="bottom" secondItem="xMX-Wh-FI6" secondAttribute="bottom" id="vPo-K7-oNt"/>
                                         </constraints>
@@ -203,7 +195,6 @@
                         <outlet property="LabelName" destination="WZg-Cg-Z2q" id="mD6-sv-RRe"/>
                         <outlet property="imageView" destination="Vkj-A2-IlV" id="RvH-Qm-eFX"/>
                         <outlet property="reviewsView" destination="xMX-Wh-FI6" id="rJb-5i-Ppj"/>
-                        <outlet property="text" destination="uLL-JZ-EZe" id="Dcf-Um-66Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3jI-YN-vgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
