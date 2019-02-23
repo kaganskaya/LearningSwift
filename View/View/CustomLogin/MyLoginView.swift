@@ -15,18 +15,44 @@ class MyLoginView: UIView {
     
     
     @IBOutlet weak var backgrView: UIImageView!
+  
+    @IBOutlet weak var username: UITextField!
     
-    @IBOutlet weak var password: UILabel!
-    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var pasword: UITextField!
     
     @IBOutlet weak var formView: UIView!
     
     @IBOutlet var myView: UIView!
     
-    let backGroundArray = [UIImage(named: "Image"),UIImage(named:"burg"),UIImage(named:"wog"),UIImage(named:"Shum")]
-   
+    
+    private var user:MyUser = MyUser(username: " ", password: " ")
+    
     private var idx: Int = 0
     
+    let backGroundArray = [UIImage(named: "Image"),UIImage(named:"burg"),UIImage(named:"wog"),UIImage(named:"Shum")]
+    
+    
+    @IBAction func logIn(_ sender: Any) {
+        
+        if pasword.text == user.password && username.text == user.username{
+            
+            UserDefaults.standard.set(true, forKey:"savedUserSession")
+            
+            UserDefaults.standard.synchronize()
+            
+            let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+
+            guard let mainController = rootViewController as? LoginConroller else { return }
+
+            Router.presentMainScreen(current: mainController)
+
+            
+        }else{
+            print("Error!")
+        }
+    }
+    
+
     
     override func prepareForInterfaceBuilder(){
         super.prepareForInterfaceBuilder()
@@ -45,19 +71,22 @@ class MyLoginView: UIView {
         setup()
     }
     
-    
+    func getData(user:MyUser){
+        
+        self.user = user
+    }
     
     func setup() {
         
         let bundle = Bundle(for: MyLoginView.self)
         bundle.loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)
         
-        
         //Bundle.main.loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)
         addSubview(myView)
         myView.frame = self.bounds
         myView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         formView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        self.show()
     }
     
     override var bounds: CGRect{
@@ -66,10 +95,7 @@ class MyLoginView: UIView {
             layer.allowsGroupOpacity = false
         }
     }
-        
-    
-    
-    
+
     @objc func changeBackground(){
         
         if idx == backGroundArray.count-1{
@@ -81,7 +107,7 @@ class MyLoginView: UIView {
         
         let toImage = backGroundArray[idx];
         
-        UIView.transition(with: self.backgrView, duration: 4, options: .transitionCrossDissolve, animations: {self.backgrView.image = toImage}, completion: nil)
+        UIView.transition(with: self.backgrView, duration: 1, options: .transitionCrossDissolve, animations: {self.backgrView.image = toImage}, completion: nil)
         
         
     }
@@ -90,9 +116,9 @@ class MyLoginView: UIView {
         
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.dark)) as UIVisualEffectView
         
-            visualEffectView.frame = self.formView.frame
+            visualEffectView.frame = self.myView.frame
         
-            visualEffectView.alpha = 0.5
+            visualEffectView.alpha = 0.2
         
             backgrView.image = UIImage(named: "burg")
         
@@ -104,31 +130,24 @@ class MyLoginView: UIView {
     }
     
     
-    func blur(){
-        
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-        
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        
-            blurEffectView.frame = backgrView.bounds
-
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-            backgrView.addSubview(blurEffectView)
-   
-    }
+//    func blur(){
+//
+//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+//
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//
+//            blurEffectView.frame = backgrView.bounds
+//
+//            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//            backgrView.addSubview(blurEffectView)
+//
+//    }
     
     func show(){
-        
-        myView.isHidden = false
-        
-        formView.isHidden = false
-        
-        backgrView.isHidden = false
-
+ 
         setupImage()
     }
-    
-  
+
 
 }

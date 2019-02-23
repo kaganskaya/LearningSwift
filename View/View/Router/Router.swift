@@ -19,14 +19,27 @@ class Router {
     
     // show master
     static func presentRootScreen(in window: UIWindow!){
+        
         window.makeKeyAndVisible()
-        window.rootViewController = MasterCreatorImpl.assembleModule()
+        if UserDefaults.standard.isLoggedIn(){
+            window.rootViewController = MasterCreatorImpl.assembleModule()
+        }else{
+            window.rootViewController = LoginCreatorImpl.assembleModule()
+
+        }
     }
     
     //navigate to master
     static func presentMainScreen(current: UIViewController?) {
         let masterController = MasterCreatorImpl.assembleModule()
-        current?.navigationController?.present(masterController, animated: true)
+        current?.present(masterController, animated: true)
+    }
+    
+    
+    //navigate to master
+    static func presentLoginScreen(current: UIViewController?) {
+        let masterController = LoginCreatorImpl.assembleModule()
+        current?.present(masterController, animated: true)
     }
     
     

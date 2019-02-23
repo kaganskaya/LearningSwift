@@ -37,5 +37,10 @@ class TableViewCell: UITableViewCell {
         
     }
     
+    func changeTextColor(){
+        self.lName.textColor = .black
+        
+    }
+    
    
 }

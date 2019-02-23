@@ -38,21 +38,26 @@ class MasterCreatorImpl:   BaseCreator {
         let presenter = MasterPresenterImpl()
         
         let navigation = UINavigationController(rootViewController: view)
-        navigation.navigationBar.tintColor = .black
-        navigation.title = "My favorites"
         
-        let backButton = UIBarButtonItem()
-        backButton.title = "Back"
-        navigation.navigationBar.topItem!.backBarButtonItem = backButton
+            navigation.navigationBar.barTintColor = .black
         
+            navigation.navigationBar.topItem!.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleSignOut))
         
-        presenter.view = view
-        presenter.interactor = interactor
+            presenter.view = view
         
-        view.presenter = presenter
+            presenter.interactor = interactor
+        
+            view.presenter = presenter
         
         
         return navigation
     }
     
+    
+    @objc class func handleSignOut() {
+
+        UserDefaults.standard.setIsLoggedIn(value: false)
+        
+        
+    }
 }

@@ -14,38 +14,55 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var descriptionText: UITextView!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
     
     @IBAction func revBut(_ sender: UIButton) {
-//        self.text.isHidden = true
-         self.reviewsView.isHidden = false
+        
+        descriptionButton = false
+        
+        reviewButton = true
+        
+        self.reviewsView.reloadData()
         
     }
+    
     @IBAction func descBut(_ sender: UIButton) {
         
-      //  self.text.isHidden = false
+        reviewButton = false
         
-        self.reviewsView.isHidden = true
-            
+        descriptionButton = true
+        
+        self.reviewsView.reloadData()
+        
     }
+    
     @IBOutlet weak var imageView: UIImageView!
     
-    @IBOutlet weak var LabelName: UILabel!
+    var descriptionButton:Bool = true
+    
+    var reviewButton:Bool = true
     
     var id:Business?
+    
     var presenter: DetailPresenter!
+    
     var reviews:[Reviews] = []
+    
     var desc:String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fillImageView(url: (id?.image_url)!)
+        //print(id?.name)
+        nameLabel.text = id?.name
         
         presenter.getDataById(id: (id?.id)!)
         
         self.presenter.getDescription(link: (id?.url)!)
-        self.reviewsView.isHidden = true
-        
+        self.descriptionButton=true
+        self.reviewButton = false
         reviewsView.delegate = self
         reviewsView.dataSource = self
         
@@ -75,32 +92,45 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController:  DetailView , UITableViewDataSource , UITableViewDelegate {
+    
     func showReviews(review: [Reviews]) {
         self.reviews = review
         self.reviewsView.reloadData()
         print(reviews.count)
     }
+    
     func getDescription(string:String) {
-        
         self.desc = string
-        
         self.reviewsView.reloadData()
-        
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+        var result:Int
         
-        return 1//reviews.count
+        if reviewButton {
+            result = reviews.count
+        }else{
+            result = 1
+        }
+        return result
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let cell = tableView.dequeueReusableCell(withIdentifier: "revCell",for: indexPath) as? ReviewCell
         
-            //cell?.fillReviewCell(text: reviews[indexPath.row].text)
+        if reviewButton {
+            
+            cell?.fillReviewCell(text: reviews[indexPath.row].text)
+            
+        }else{
+            
+            cell?.fillReviewCell(text: desc!)
+        }
         
-        cell?.fillReviewCell(text: desc!)
+        
+        
         return cell!
     }
     

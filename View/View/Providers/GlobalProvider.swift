@@ -15,9 +15,10 @@ import SwiftSoup
 
 class GlobalProvider {
     
+    let headers: HTTPHeaders = ["Authorization": "Bearer D1OLBwqLhC5_27J_oSLIjXhAqJs17p6urXveZCxdAyuIQaba9toeFnc1kCWBL8DG9cAsDKsIUX-qki8Ey5fL_eK-XtUQfngg6HSrdWtQmXW4Q4hBOBJ76Z1L-eplXHYx"]
+    
     func getPlaces(coord: CLLocationCoordinate2D) -> Observable<[Business]> {
         
-        let headers: HTTPHeaders = ["Authorization": "Bearer D1OLBwqLhC5_27J_oSLIjXhAqJs17p6urXveZCxdAyuIQaba9toeFnc1kCWBL8DG9cAsDKsIUX-qki8Ey5fL_eK-XtUQfngg6HSrdWtQmXW4Q4hBOBJ76Z1L-eplXHYx"]
         
         let url = "https://api.yelp.com/v3/businesses/search?latitude=\(coord.latitude)&longitude=\(coord.longitude)"
         
@@ -27,7 +28,7 @@ class GlobalProvider {
         
             let request = Alamofire
                 
-                .request(url, method: .get, headers: headers )
+                .request(url, method: .get, headers: self.headers )
                 
                 .validate()
                 
@@ -45,13 +46,10 @@ class GlobalProvider {
                             do{
                             
                                 let content:[Business] = try decoder.decode([Business].self, from: data)
-//                                for f in content {
-//                                    self.getJSON(strURL: f.imageURL!)
-//
-//                                }
-                              //  print(content)
+
                                 observer.onNext(content)
                                 observer.onCompleted()
+                                
                             }catch let er as NSError{
                                 
                                 observer.onError(er)
@@ -84,8 +82,7 @@ class GlobalProvider {
     
     func getReviews(id:String) -> Observable<[Reviews]> {
         
-        let headers: HTTPHeaders = ["Authorization": "Bearer D1OLBwqLhC5_27J_oSLIjXhAqJs17p6urXveZCxdAyuIQaba9toeFnc1kCWBL8DG9cAsDKsIUX-qki8Ey5fL_eK-XtUQfngg6HSrdWtQmXW4Q4hBOBJ76Z1L-eplXHYx"]
-        
+
         let url = "https://api.yelp.com/v3/businesses/\(id)/reviews"
         
         return Observable<[Reviews]>.create { observer -> Disposable in
@@ -94,7 +91,7 @@ class GlobalProvider {
             
             let request = Alamofire
                 
-                .request(url, method: .get, headers: headers )
+                .request(url, method: .get, headers: self.headers )
                 
                 .validate()
                 
@@ -147,30 +144,31 @@ class GlobalProvider {
     
     
     func getDescription(link:String) -> Observable<String> {
+      
         let url = URL(string:link)
-        //"https://www.yelp.com/biz/zazie-san-francisco?adjust_creative=ymikJqTE3CYzJ0i3sPsiGg&hrid=KVb9BBfCugoqVc9tiVtVQA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=ymikJqTE3CYzJ0i3sPsiGg"
+      
          return Observable<String>.create { observer -> Disposable in
-        do{
+          
+            do{
             
-            let  html = try String.init(contentsOf: url!)
-            let doc: Document = try SwiftSoup.parse(html)
-            let links: Elements = try doc.select("div.from-biz-owner-content > p") // a with href 29-28
-            let linkHref = try links.first()
+                let  html = try String.init(contentsOf: url!)
+                let doc: Document = try SwiftSoup.parse(html)
+                let links: Elements = try doc.select("div.from-biz-owner-content > p")
+                let linkHref = links.first()
                 
-            observer.onNext((try linkHref?.text())!)
-            observer.onCompleted()
-            //print(linkHref)
-            
-        } catch Exception.Error(let type, let message){
+                    observer.onNext((try linkHref?.text()) ?? "No description yet =((")
+                    observer.onCompleted()
+        
+           
+            } catch Exception.Error( _, let message){
             print(message)
             observer.onError(message as! Error)
-        } catch {
+            } catch {
             print("error")
-        }
+            }
         
     
         return Disposables.create(with: {
-       
         })
     }
     

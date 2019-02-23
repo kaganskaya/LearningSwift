@@ -46,7 +46,7 @@ extension ViewController: MasterView, UITableViewDataSource , UITableViewDelegat
         self.tableViewData.reloadData()
     }
     
-    
+   
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
@@ -66,16 +66,16 @@ extension ViewController: MasterView, UITableViewDataSource , UITableViewDelegat
         
         return cell!
     }
-    
+   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         i = indexPath.row
         
+        Router.presentDetailScreen(current: self, id: business[indexPath.row])
         
-         Router.presentDetailScreen(current: self, id: business[indexPath.row])    }
+    }
     
-    
-    
+
 }
 
 

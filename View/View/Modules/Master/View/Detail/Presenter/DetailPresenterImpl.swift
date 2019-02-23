@@ -12,8 +12,6 @@ import MapKit
 
 class DetailPresenterImpl: DetailPresenter{
     
-  
-    
 
     
     weak var view: DetailView?
@@ -46,6 +44,8 @@ class DetailPresenterImpl: DetailPresenter{
 
     func getDescription(link: String) {
         interactor.getDescription(link: link)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { (n) in
                         print(n)
@@ -62,31 +62,4 @@ class DetailPresenterImpl: DetailPresenter{
 }
 
 
-    /*
-        getLocation from city name
-     */
-
-//
-//
-//
-//    /*
-//      get weather data by city name
-//    */
-//    func loadWeather(city: String) {
-//        view?.showLoading()
-//        interactor.getWeatcher(city: city)
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(
-//                onNext: { (n) in
-//                print("loadWeather -> onNext")
-//                self.view?.showResultScreen(result: n)
-//            }, onError: { (error) in
-//                self.view?.showErrorScreen(error: error.localizedDescription)
-//            }, onCompleted: {
-//                print("loadWeather -> onCompleted")
-//            }, onDisposed: {
-//                print("loadWeather -> onDisposed")
-//            }).disposed(by: disposeBag)
-
-    
 

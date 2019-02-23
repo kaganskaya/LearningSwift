@@ -14,13 +14,13 @@ class ReviewCell: UITableViewCell {
    
     func fillReviewCell(text:String){
         
-        var reviewLabelHeight = reviewLabel.optimalHeigt
+        let reviewLabelHeight = reviewLabel.optimalHeigt
         
-        reviewLabel.frame = CGRect(x: reviewLabel.frame.origin.x, y:reviewLabel.frame.origin.y, width: reviewLabel.frame.width, height: reviewLabelHeight)
+            reviewLabel.frame = CGRect(x: reviewLabel.frame.origin.x, y:reviewLabel.frame.origin.y, width: reviewLabel.frame.width, height: reviewLabelHeight)
         
-        reviewLabel.numberOfLines = 0
+            reviewLabel.numberOfLines = 0
         
-        reviewLabel.text = text
+            reviewLabel.text = text
         
         
     }
