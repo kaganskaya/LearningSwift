@@ -11,11 +11,13 @@ import RxSwift
 import Alamofire
 import MapKit
 
-class Repos {
+class Repository {
     
     var util = LocationUtil()
     
     var globalpr = GlobalProvider()
+    
+    var localProvider = LocalProvider()
     
     init (util: LocationUtil, glob:GlobalProvider){
         self.util = util
@@ -34,6 +36,28 @@ class Repos {
         
             
        
+    }
+    
+    func getPlacesFromBd(isLoaded:Bool) -> Observable<[Places]>{
+        
+        return self.localProvider.getPlacesFromBd(isLoaded:isLoaded)
+        
+    }
+    
+    func savePlaces(business:[Business]) -> Observable<Bool> {
+        
+           return self.localProvider.savePlacesToBd(business: business)
+//            .flatMap {
+//                isSaved -> Observable<Bool> in
+//
+//                if isSaved {
+//                    return Observable.just(true)
+//                }
+//
+//                return Observable.just(false)
+//
+//            }
+//
     }
     
 }

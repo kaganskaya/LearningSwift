@@ -44,7 +44,7 @@ class Router {
     
     
     //navigate to master
-    static func presentDetailScreen(current: UIViewController?, id: Business) {
+    static func presentDetailScreen(current: UIViewController?, id: Places) {
         let detailController : DetailViewController = DetailCreatorImpl.assembleModule() as! DetailViewController
             detailController.id = id
         current?.navigationController?.pushViewController(detailController, animated: true)

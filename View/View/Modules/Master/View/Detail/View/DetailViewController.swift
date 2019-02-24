@@ -43,7 +43,7 @@ class DetailViewController: UIViewController {
     
     var reviewButton:Bool = true
     
-    var id:Business?
+    var id:Places?
     
     var presenter: DetailPresenter!
     

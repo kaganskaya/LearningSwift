@@ -9,8 +9,109 @@
 import Foundation
 import RxSwift
 import Alamofire
+import CoreData
 
 class LocalProvider {
+    
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
+    lazy var managedContext = appDelegate!.persistentContainer.viewContext
+    
+    
+    
+    func savePlacesToBd(business: [Business]) -> Observable<Bool>{
+        deleteData()
+        var result :Observable<Bool> = Observable.just(false)
+        for item in business {
+            
+            result =  saveitem(business: item)
+            
+        }
+       
+        return result
+        
+    }
+    
+    
+    func getPlacesFromBd(isLoaded:Bool) -> Observable<[Places]>{
+        print(isLoaded)
+        
+        return Observable<[Places]>.create { observer -> Disposable in
+    
+            let fetchRequest =  NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
+        
+        do {
+            
+            let business  = try self.managedContext.fetch(fetchRequest) as! [Places]
+           
+            observer.onNext(business  )
+            observer.onCompleted()
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            observer.onError(error)
+        }
+        
+            return Disposables.create(with: {
+            })
+        }
+        
+       
+        
+    }
+    
+    private func deleteData(){
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Detele all my data in error : \(error) \(error.userInfo)")
+        }
+        
+    }
+    
+    private func saveitem(business: Business) -> Observable<Bool>{
+        
+       
+        do {
+            
+                let entity =  NSEntityDescription.entity(forEntityName: "Places",in: managedContext)!
+                
+                let busines = NSManagedObject(entity: entity,insertInto: managedContext)
+                
+                busines.setValue(business.id, forKeyPath: "id")
+                
+                busines.setValue(business.url, forKeyPath: "url")
+            
+                busines.setValue(business.image_url!, forKeyPath: "image_url")
+                
+                busines.setValue(business.name, forKeyPath: "name")
+
+                
+                do {
+                    try managedContext.save()
+                    return Observable.just(true)
+                } catch let error as NSError {
+                    print("Could not save. \(error), \(error.userInfo)")
+                    return Observable.just(false)
+                }
+                
+            
+            
+        
+        return Observable.just(false)
+        
+        }}
+
     
     func setUserData(username:String, password:String){
         

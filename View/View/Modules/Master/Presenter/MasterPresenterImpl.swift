@@ -11,30 +11,61 @@ import RxSwift
 import MapKit
 
 class MasterPresenterImpl: MasterPresenter {
-   
+    
+    
+    
+    var networkInteractor: NetworkInteractor!
+    
+    var storageInteractor: StorageInteractor!
     
     weak var view: MasterView?
     
-    var interactor: MasterInteractor!
-    
     private var disposeBag = DisposeBag()
     
-     
+    
+    
+    func loadData(city: String) -> Observable<[Places]> {
+        return self.networkInteractor.checkInternet()
+            .flatMap {
+                isInternet -> Observable<Bool> in
+                
+                if isInternet {
+                   return self.uploadFromInternet(city: city)
+                }
+                
+                return Observable.just(false)
+            }
+            .flatMap { isDataUpdated in
+                self.storageInteractor.getFromStorage(isSucLoaded: isDataUpdated)
+        }
+    }
+    
+    
+    func uploadFromInternet(city: String) -> Observable<Bool> {
+        
+        return self.networkInteractor.findPlaces(city: city).flatMap { result in
+            self.storageInteractor.saveInStorage(business: result)
+        }
+        
+    }
+    
+    
     func findBusiness(city: String) {
         
-        interactor.getPlaces(city:city )
+        self.loadData(city: city)
             .subscribe(
-                onNext: { (n) in
-                    self.view?.showBusiness(business: n)
-            }, onError: { (error) in
-                print("-> \(error.localizedDescription)")
-                //self.view?.showErrorLocation(value: error.localizedDescription)
-            }, onCompleted: {
-                print(" onCompleted")
-            }, onDisposed: {
-                print("onDisposed")
-            }).disposed(by: disposeBag)
-        
+                    onNext: { (n) in
+                      
+                            self.view?.showBusiness(business: n)
+                    }, onError: { (error) in
+                        //print("-> \(error.localizedDescription)")
+                        //self.view?.showErrorLocation(value: error.localizedDescription)
+                    }, onCompleted: {
+                        //print(" onCompleted")
+                    }, onDisposed: {
+                        //print("onDisposed")
+                    }).disposed(by: disposeBag)
+    
     }
     
     
@@ -44,6 +75,7 @@ class MasterPresenterImpl: MasterPresenter {
         
     }
     
+   
     
     
 }

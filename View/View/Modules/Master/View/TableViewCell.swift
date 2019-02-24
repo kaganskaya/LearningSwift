@@ -19,7 +19,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var backgroundImage: UIImageView!
     
     
-    func fillImageView(business:Business){
+    func fillImageView(business:Places){
         
         if let myUrl = URL(string: business.image_url!){
         

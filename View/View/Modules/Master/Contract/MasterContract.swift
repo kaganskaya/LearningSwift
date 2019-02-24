@@ -14,19 +14,15 @@ import MapKit
 
 protocol MasterPresenter: class {
     var view: MasterView? { get set }
-    var interactor: MasterInteractor! { get set }
+    var networkInteractor: NetworkInteractor! {get set}
+    var storageInteractor: StorageInteractor! {get set}
     func findBusiness(city:String)
     func onViewDidLoad()
 }
 
-protocol MasterInteractor: class {
-    
-    var  myRepository: Repos! {get set}
-    func getPlaces(city: String) -> Observable<[Business]>
-    
-}
+
 
 protocol MasterView: class {
     var presenter: MasterPresenter! { get set }
-    func showBusiness(business:[Business])
+    func showBusiness(business:[Places])
 }

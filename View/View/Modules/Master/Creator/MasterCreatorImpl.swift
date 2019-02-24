@@ -31,9 +31,11 @@ class MasterCreatorImpl:   BaseCreator {
         
         let glp = GlobalProvider()
         
-        let rep  = Repos(util:lcu,glob:glp)
+        let rep  = Repository(util:lcu,glob:glp)
         
-        let interactor = MasterInteratorImpl(repository: rep)
+        let storageInteractor = StorageInteractorImpl(repository: rep)
+        
+        let networkInteractor = NetwoekInteractorImpl(repository: rep)
 
         let presenter = MasterPresenterImpl()
         
@@ -45,7 +47,9 @@ class MasterCreatorImpl:   BaseCreator {
         
             presenter.view = view
         
-            presenter.interactor = interactor
+            presenter.networkInteractor = networkInteractor
+        
+            presenter.storageInteractor = storageInteractor
         
             view.presenter = presenter
         

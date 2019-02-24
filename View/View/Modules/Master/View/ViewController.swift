@@ -19,7 +19,7 @@ class ViewController: UIViewController{
     
     var presenter: MasterPresenter!
         
-    var business:[Business] = []
+    var business:[Places] = []
     
     var i = 0
 
@@ -41,7 +41,7 @@ class ViewController: UIViewController{
 extension ViewController: MasterView, UITableViewDataSource , UITableViewDelegate {
     
     
-    func showBusiness(business: [Business]) {
+    func showBusiness(business: [Places]) {
         self.business = business
         self.tableViewData.reloadData()
     }
