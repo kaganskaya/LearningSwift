@@ -29,16 +29,30 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         presenter.onViewDidLoad()
         presenter.findBusiness(city:"San Francisco")
-                
+        presenter.logout()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(self.signOut))
+        
+        
         tableViewData.delegate = self
         tableViewData.dataSource = self
+
     }
     
+    @objc func signOut() {
     
+            UserDefaults.standard.setIsLoggedIn(value: false)
+            Router.presentLoginScreen(current: self)
+        }
     
 }
 
 extension ViewController: MasterView, UITableViewDataSource , UITableViewDelegate {
+    func showLogin(status: Bool) {
+        if status==false{
+            Router.presentLoginScreen(current: self)}
+    }
+    
     
     
     func showBusiness(business: [Places]) {

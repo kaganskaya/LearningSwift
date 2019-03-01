@@ -21,12 +21,12 @@ class Router {
     static func presentRootScreen(in window: UIWindow!){
         
         window.makeKeyAndVisible()
-        if UserDefaults.standard.isLoggedIn(){
-            window.rootViewController = MasterCreatorImpl.assembleModule()
-        }else{
-            window.rootViewController = LoginCreatorImpl.assembleModule()
+//        if UserDefaults.standard.isLoggedIn(){
+         window.rootViewController = MasterCreatorImpl.assembleModule()
+//        }else{
+         //   window.rootViewController = LoginCreatorImpl.assembleModule()
 
-        }
+        //}
     }
     
     //navigate to master

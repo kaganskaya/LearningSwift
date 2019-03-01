@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-       // UserDefaults.standard.set(false, forKey:"savedUserSession")
+     // UserDefaults.standard.set(false, forKey:"savedUserSession")
         Router.presentRootScreen(in: window!)
-        let container = NSPersistentContainer(name: "Model")
-        print(container.persistentStoreDescriptions.first?.url)
+       // let container = NSPersistentContainer(name: "Model")
+        //print(container.persistentStoreDescriptions.first?.url)
         return true
     }
 

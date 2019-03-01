@@ -28,7 +28,10 @@ class StorageInteractorImpl:StorageInteractor {
         return myRepository.getPlacesFromBd(isLoaded:isSucLoaded)
     }
     
-    
+    func isLogedIn() ->Observable<Bool> {
+        return myRepository.isLogedIn()
+        
+    }
     
     
 }

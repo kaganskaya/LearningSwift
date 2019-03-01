@@ -18,6 +18,7 @@ protocol MasterPresenter: class {
     var storageInteractor: StorageInteractor! {get set}
     func findBusiness(city:String)
     func onViewDidLoad()
+    func logout()
 }
 
 
@@ -25,4 +26,5 @@ protocol MasterPresenter: class {
 protocol MasterView: class {
     var presenter: MasterPresenter! { get set }
     func showBusiness(business:[Places])
+    func showLogin(status: Bool)
 }

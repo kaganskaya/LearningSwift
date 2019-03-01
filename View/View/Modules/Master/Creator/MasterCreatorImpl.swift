@@ -24,6 +24,7 @@ class MasterCreatorImpl:   BaseCreator {
     
     
     static func assembleModule() -> UIViewController {
+       
         
         let view = getSelfUIViewController() as! ViewController
         
@@ -43,8 +44,6 @@ class MasterCreatorImpl:   BaseCreator {
         
             navigation.navigationBar.barTintColor = .black
         
-            navigation.navigationBar.topItem!.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleSignOut))
-        
             presenter.view = view
         
             presenter.networkInteractor = networkInteractor
@@ -58,10 +57,5 @@ class MasterCreatorImpl:   BaseCreator {
     }
     
     
-    @objc class func handleSignOut() {
 
-        UserDefaults.standard.setIsLoggedIn(value: false)
-        
-        
-    }
 }

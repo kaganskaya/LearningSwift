@@ -67,7 +67,24 @@ class MasterPresenterImpl: MasterPresenter {
                     }).disposed(by: disposeBag)
     
     }
-    
+    func logout(){
+        
+        storageInteractor.isLogedIn()
+            .subscribe(
+            onNext: { (n) in
+                
+                self.view?.showLogin(status: n)
+        }, onError: { (error) in
+            //print("-> \(error.localizedDescription)")
+            //self.view?.showErrorLocation(value: error.localizedDescription)
+        }, onCompleted: {
+            //print(" onCompleted")
+        }, onDisposed: {
+            //print("onDisposed")
+        }).disposed(by: disposeBag)
+        
+        
+    }
     
     func onViewDidLoad() {
         

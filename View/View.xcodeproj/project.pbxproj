@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6705288322281F270061B027 /* NetworkReviewsInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705288222281F270061B027 /* NetworkReviewsInteractorImpl.swift */; };
+		6705288522281F690061B027 /* StorageReviewsInteractorInpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705288422281F690061B027 /* StorageReviewsInteractorInpl.swift */; };
 		6708F3CD2221933300B2D752 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708F3CC2221933300B2D752 /* UserDefaults.swift */; };
 		671C45EB221D7DCB009118F8 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671C45EA221D7DCB009118F8 /* UILabel.swift */; };
 		67242B6B2222B19600F7F02F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 67242B692222B19600F7F02F /* Model.xcdatamodeld */; };
@@ -24,7 +26,6 @@
 		6783744E2213673000C5852F /* MasterContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783744D2213673000C5852F /* MasterContract.swift */; };
 		67837462221368A500C5852F /* DetailCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67837451221368A500C5852F /* DetailCreator.swift */; };
 		67837464221368A500C5852F /* DetailPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67837455221368A500C5852F /* DetailPresenterImpl.swift */; };
-		6783746A221368A500C5852F /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783745D221368A500C5852F /* DetailInteractor.swift */; };
 		6783747222136A4C00C5852F /* DetailContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783747122136A4C00C5852F /* DetailContract.swift */; };
 		67A8FC21221B1A990087064B /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A8FC20221B1A990087064B /* ReviewCell.swift */; };
 		67E01DCA22119F5F0055769F /* MyLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67E01DC922119F5F0055769F /* MyLoginView.xib */; };
@@ -53,6 +54,8 @@
 		3BB10FED672593B719C3F45D /* Pods-View.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-View.release.xcconfig"; path = "Pods/Target Support Files/Pods-View/Pods-View.release.xcconfig"; sourceTree = "<group>"; };
 		3E2198F100AF3D3786261C87 /* Pods-View.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-View.debug.xcconfig"; path = "Pods/Target Support Files/Pods-View/Pods-View.debug.xcconfig"; sourceTree = "<group>"; };
 		47259DF8D80C48A7EFBF3BA6 /* Pods_View.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_View.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6705288222281F270061B027 /* NetworkReviewsInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReviewsInteractorImpl.swift; sourceTree = "<group>"; };
+		6705288422281F690061B027 /* StorageReviewsInteractorInpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageReviewsInteractorInpl.swift; sourceTree = "<group>"; };
 		6708F3CC2221933300B2D752 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		671C45EA221D7DCB009118F8 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		67242B6A2222B19600F7F02F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -70,7 +73,6 @@
 		6783744D2213673000C5852F /* MasterContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterContract.swift; sourceTree = "<group>"; };
 		67837451221368A500C5852F /* DetailCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCreator.swift; sourceTree = "<group>"; };
 		67837455221368A500C5852F /* DetailPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPresenterImpl.swift; sourceTree = "<group>"; };
-		6783745D221368A500C5852F /* DetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		6783747122136A4C00C5852F /* DetailContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailContract.swift; sourceTree = "<group>"; };
 		67A8FC20221B1A990087064B /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		67E01DC922119F5F0055769F /* MyLoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyLoginView.xib; sourceTree = "<group>"; };
@@ -108,6 +110,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6704F51E22285DEF0054984E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		6708F3CB2221932100B2D752 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +162,7 @@
 		6725C7592213197300621B2B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6704F51E22285DEF0054984E /* CoreData */,
 				6708F3CB2221932100B2D752 /* UserDefaults */,
 				67FB2B6F22209EBA003551C6 /* User */,
 				67FE4A15221B0D8700A1C8B1 /* Reviews */,
@@ -303,7 +313,8 @@
 		6783745C221368A500C5852F /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				6783745D221368A500C5852F /* DetailInteractor.swift */,
+				6705288222281F270061B027 /* NetworkReviewsInteractorImpl.swift */,
+				6705288422281F690061B027 /* StorageReviewsInteractorInpl.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -594,7 +605,6 @@
 				67837445221365EC00C5852F /* MasterCreatorImpl.swift in Sources */,
 				67FB2B752220A0C8003551C6 /* LoginPresenterImpl.swift in Sources */,
 				67242B752222E26500F7F02F /* StorageInteractorImpl.swift in Sources */,
-				6783746A221368A500C5852F /* DetailInteractor.swift in Sources */,
 				678374362213631300C5852F /* Router.swift in Sources */,
 				67242B732222E22B00F7F02F /* NetwoekInteractorImpl.swift in Sources */,
 				67242B712222E06F00F7F02F /* Interactor.swift in Sources */,
@@ -603,6 +613,7 @@
 				67FE4A17221B0D9B00A1C8B1 /* Reviews.swift in Sources */,
 				6783743B2213644C00C5852F /* BaseContract.swift in Sources */,
 				6725C76222131CB300621B2B /* GlobalProvider.swift in Sources */,
+				6705288322281F270061B027 /* NetworkReviewsInteractorImpl.swift in Sources */,
 				67FB2B7122209F97003551C6 /* LoginCreator.swift in Sources */,
 				67FB2B772220A160003551C6 /* LocalProvider.swift in Sources */,
 				67FB2B6C22209D7F003551C6 /* LoginContract.swift in Sources */,
@@ -610,6 +621,7 @@
 				67F85686221062F900A20C57 /* TableViewCell.swift in Sources */,
 				67F856762210420000A20C57 /* ViewController.swift in Sources */,
 				67FB2B732220A0B6003551C6 /* LoginInteractor.swift in Sources */,
+				6705288522281F690061B027 /* StorageReviewsInteractorInpl.swift in Sources */,
 				6725C75C221319D100621B2B /* Business.swift in Sources */,
 				6783744E2213673000C5852F /* MasterContract.swift in Sources */,
 				67242B6B2222B19600F7F02F /* Model.xcdatamodeld in Sources */,

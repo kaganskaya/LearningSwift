@@ -22,10 +22,25 @@ class LoginConroller: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+      
         presenter.getLoginData()
         
         loginView.getData(user: self.user)
+        
         loginView.setup()
+
+        loginView.completionHandler =
+            { pressed,username,password in
+                
+                if pressed && username == "admin" && password == "admin" {
+                    UserDefaults.standard.setIsLoggedIn(value: true)
+                    Router.presentMainScreen(current: self)
+                    
+                }
+                
+                return pressed
+                
+        }
         
       
     }

@@ -33,12 +33,12 @@ class DetailCreatorImpl: BaseCreator {
         
         let globalProvider: GlobalProvider  = GlobalProvider()
         let presenter = DetailPresenterImpl()
-        let interactor = DetailInteractorImpl(provider: globalProvider)
-    
+      //  let interactor = DetailInteractorImpl(provider: globalProvider)
+    //
         view.presenter = presenter
         
         presenter.view = view
-        presenter.interactor = interactor
+       // presenter.interactor = interactor
      
     
         

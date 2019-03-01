@@ -32,6 +32,19 @@ class LocalProvider {
         
     }
     
+    func saveReviewsToBd(reviews: [Reviews], id:String) -> Observable<Bool>{
+        deleteData()
+        var result :Observable<Bool> = Observable.just(false)
+        for item in reviews {
+            
+            result =  saveReview(review: item, id:id)
+            
+        }
+        
+        return result
+        
+    }
+    
     
     func getPlacesFromBd(isLoaded:Bool) -> Observable<[Places]>{
         print(isLoaded)
@@ -81,7 +94,7 @@ class LocalProvider {
     
     private func saveitem(business: Business) -> Observable<Bool>{
         
-       
+    
         do {
             
                 let entity =  NSEntityDescription.entity(forEntityName: "Places",in: managedContext)!
@@ -112,6 +125,34 @@ class LocalProvider {
         
         }}
 
+
+    
+    private func saveReview(review: Reviews, id:String) -> Observable<Bool>{
+        
+        
+        do {
+            
+            let entity =  NSEntityDescription.entity(forEntityName: "Review",in: managedContext)!
+            
+            let busines = NSManagedObject(entity: entity,insertInto: managedContext)
+            
+            busines.setValue(review.text, forKeyPath: "text")
+            
+            do {
+                try managedContext.save()
+                return Observable.just(true)
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+                return Observable.just(false)
+            }
+            
+            
+            
+            
+            return Observable.just(false)
+            
+        }}
+    
     
     func setUserData(username:String, password:String){
         
@@ -123,8 +164,9 @@ class LocalProvider {
         let archivedAdmin:Data = NSKeyedArchiver.archivedData(withRootObject: admin)
         UserDefaults.standard.set(archivedAdmin, forKey: "savedUserSession")
         UserDefaults.standard.synchronize()
-         
+        
     }
+    
     
     func getLoginData() -> Observable<MyUser>{
         
@@ -151,5 +193,15 @@ class LocalProvider {
             })
         }
 
+    }
+    func logedIn() ->Observable<Bool>{
+        
+        if UserDefaults.standard.isLoggedIn()
+        {
+            return Observable.just(true)
+        }else{
+            
+            return Observable.just(false)
+        }
     }
 }

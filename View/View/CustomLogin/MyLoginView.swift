@@ -31,25 +31,16 @@ class MyLoginView: UIView {
     
     let backGroundArray = [UIImage(named: "Image"),UIImage(named:"burg"),UIImage(named:"wog"),UIImage(named:"Shum")]
     
+    var completionHandler:((Bool,String,String) -> Bool)?
+    var compUserName:((String) -> String)?
+    var compPasword:((String) -> String)?
     
     @IBAction func logIn(_ sender: Any) {
         
-        if pasword.text == user.password && username.text == user.username{
-            
-            UserDefaults.standard.set(true, forKey:"savedUserSession")
-            
-            UserDefaults.standard.synchronize()
-            
-            let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+       completionHandler?(true,username.text!,pasword.text!)
+//        compUserName?(username.text!)
+//        compPasword?(pasword.text!)
 
-            guard let mainController = rootViewController as? LoginConroller else { return }
-
-            Router.presentMainScreen(current: mainController)
-
-            
-        }else{
-            print("Error!")
-        }
     }
     
 
