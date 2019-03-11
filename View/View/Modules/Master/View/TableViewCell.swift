@@ -20,21 +20,8 @@ class TableViewCell: UITableViewCell {
     
     
     func fillImageView(business:Places){
-        
-        if let myUrl = URL(string: business.image_url!){
-        
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: myUrl)
-            
-            DispatchQueue.main.async {
-                
-                self.backgroundImage.image = UIImage(data: data!)
-                
-                self.lName.text = business.name
-                
-            }
-            }}
-        
+        self.backgroundImage.downloadImageFrom(urlString: business.image_url!)
+        self.lName.text = business.name
     }
     
     func changeTextColor(){

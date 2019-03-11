@@ -72,17 +72,17 @@ class DetailViewController: UIViewController {
 
     func fillImageView(url:String){
         
-         let myUrl = URL(string: url)
+//         let myUrl = URL(string: url)
+//
+//        DispatchQueue.global().async {
+//            let data = try? Data(contentsOf: myUrl!)
+//
+//            DispatchQueue.main.async {
         
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: myUrl!)
-            
-            DispatchQueue.main.async {
-                
-                self.imageView.image = UIImage(data: data!)
-                
-            }
-        }
+                self.imageView.downloadImageFrom(urlString: url)
+//
+//            }
+//        }
         
         
         

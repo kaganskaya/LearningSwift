@@ -17,6 +17,7 @@
 		67242B752222E26500F7F02F /* StorageInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67242B742222E26500F7F02F /* StorageInteractorImpl.swift */; };
 		6725C75C221319D100621B2B /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6725C75B221319D100621B2B /* Business.swift */; };
 		6725C76222131CB300621B2B /* GlobalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6725C76122131CB300621B2B /* GlobalProvider.swift */; };
+		675CC7FD2236722200395F34 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675CC7FC2236722200395F34 /* UIImageView.swift */; };
 		6768CB262210BB54009206A7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6768CB252210BB54009206A7 /* DetailViewController.swift */; };
 		678374362213631300C5852F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678374352213631300C5852F /* Router.swift */; };
 		6783743B2213644C00C5852F /* BaseContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6783743A2213644C00C5852F /* BaseContract.swift */; };
@@ -64,6 +65,7 @@
 		67242B742222E26500F7F02F /* StorageInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageInteractorImpl.swift; sourceTree = "<group>"; };
 		6725C75B221319D100621B2B /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		6725C76122131CB300621B2B /* GlobalProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalProvider.swift; sourceTree = "<group>"; };
+		675CC7FC2236722200395F34 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		6768CB252210BB54009206A7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		678374352213631300C5852F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		6783743A2213644C00C5852F /* BaseContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContract.swift; sourceTree = "<group>"; };
@@ -177,6 +179,14 @@
 				6725C75B221319D100621B2B /* Business.swift */,
 			);
 			path = Places;
+			sourceTree = "<group>";
+		};
+		675CC7FB2236720200395F34 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				675CC7FC2236722200395F34 /* UIImageView.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		67837434221362DC00C5852F /* Router */ = {
@@ -357,6 +367,7 @@
 		67F856722210420000A20C57 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				675CC7FB2236720200395F34 /* Extension */,
 				67242B6F2222E05B00F7F02F /* Interactors */,
 				67242B6D2222DF6100F7F02F /* Util */,
 				67242B6C2222DF1A00F7F02F /* Repoository */,
@@ -616,6 +627,7 @@
 				6705288322281F270061B027 /* NetworkReviewsInteractorImpl.swift in Sources */,
 				67FB2B7122209F97003551C6 /* LoginCreator.swift in Sources */,
 				67FB2B772220A160003551C6 /* LocalProvider.swift in Sources */,
+				675CC7FD2236722200395F34 /* UIImageView.swift in Sources */,
 				67FB2B6C22209D7F003551C6 /* LoginContract.swift in Sources */,
 				67837462221368A500C5852F /* DetailCreator.swift in Sources */,
 				67F85686221062F900A20C57 /* TableViewCell.swift in Sources */,
