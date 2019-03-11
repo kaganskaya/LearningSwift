@@ -11,6 +11,7 @@ import RxSwift
 import MapKit
 
 class LoginPresenterImpl: LoginPresenter{
+    
     var view: LoginView?
     
     var interactor: LoginInteractor!
@@ -32,9 +33,20 @@ class LoginPresenterImpl: LoginPresenter{
             }).disposed(by: disposeBag)
     }
     
-    func onViewDidLoad() {
+    func onViewDidLoad() {}
+    
+    
+    
+    
+    func logIn(username: String, password: String) {
         
-    }   
+        interactor.logIn(username:username,password:password)
+            .subscribe(onNext: { (n) in
+                self.view?.presentMainScreen()
+            }).disposed(by: disposeBag)
+    }
+    
+    
     
     
 }

@@ -47,7 +47,7 @@ class DetailViewController: UIViewController {
     
     var presenter: DetailPresenter!
     
-    var reviews:[Reviews] = []
+    var reviews:[Review] = []
     
     var desc:String? = ""
     
@@ -58,7 +58,7 @@ class DetailViewController: UIViewController {
         //print(id?.name)
         nameLabel.text = id?.name
         
-        presenter.getDataById(id: (id?.id)!)
+        presenter.getDataById(id: id!)
         
         self.presenter.getDescription(link: (id?.url)!)
         self.descriptionButton=true
@@ -93,7 +93,7 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController:  DetailView , UITableViewDataSource , UITableViewDelegate {
     
-    func showReviews(review: [Reviews]) {
+    func showReviews(review: [Review]) {
         self.reviews = review
         self.reviewsView.reloadData()
         print(reviews.count)
@@ -122,7 +122,7 @@ extension DetailViewController:  DetailView , UITableViewDataSource , UITableVie
         
         if reviewButton {
             
-            cell?.fillReviewCell(text: reviews[indexPath.row].text)
+            cell?.fillReviewCell(text: reviews[indexPath.row].text!)
             
         }else{
             

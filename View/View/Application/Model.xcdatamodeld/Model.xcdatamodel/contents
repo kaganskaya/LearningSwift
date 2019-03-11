@@ -8,11 +8,12 @@
         <relationship name="review" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="place" inverseEntity="Review" syncable="YES"/>
     </entity>
     <entity name="Review" representedClassName="Review" syncable="YES" codeGenerationType="class">
+        <attribute name="placeId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Places" inverseName="review" inverseEntity="Places" syncable="YES"/>
     </entity>
     <elements>
         <element name="Places" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="Review" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="Review" positionX="-63" positionY="9" width="128" height="90"/>
     </elements>
 </model>

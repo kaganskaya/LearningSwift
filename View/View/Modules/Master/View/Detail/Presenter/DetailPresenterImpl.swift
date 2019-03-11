@@ -17,7 +17,6 @@ class DetailPresenterImpl: DetailPresenter{
     
     var storageReviewsInteractor: StorageReviewsInteractor!
     
-    
 
     
     weak var view: DetailView?
@@ -27,7 +26,7 @@ class DetailPresenterImpl: DetailPresenter{
     func viewDidLoad() { }
     
     
-    func loadData(id: String) -> Observable<[Places]> {
+    func loadData(id: Places) -> Observable<[Review]> {
         return self.networkReviewsInteractor.checkInternet()
             .flatMap {
                 isInternet -> Observable<Bool> in
@@ -39,34 +38,34 @@ class DetailPresenterImpl: DetailPresenter{
                 return Observable.just(false)
             }
             .flatMap { isDataUpdated in
-                self.storageReviewsInteractor.getFromStorage(isSucLoaded: isDataUpdated)
+                self.storageReviewsInteractor.getFromStorage(isSucLoaded: isDataUpdated,id:id)
         }
     }
     
     
-    func uploadFromInternet(id: String) -> Observable<Bool> {
+    func uploadFromInternet(id: Places) -> Observable<Bool> {
         
-        return self.networkReviewsInteractor.getReviews(id: id).flatMap { result in
+        return self.networkReviewsInteractor.getReviews(id: id.id!).flatMap { result in
             self.storageReviewsInteractor.saveInStorage(reviews: result, id: id)        }
         
     }
     
     
     
-    func getDataById(id: String) {
+    func getDataById(id: Places) {
         
-//        self.loadData(id: id)
-//            .subscribe(
-//            onNext: { (n) in
-//               // self.view?.showReviews(review: n)
-//        }, onError: { (error) in
-//            print("-> \(error.localizedDescription)")
-//        }, onCompleted: {
-//            print(" onCompleted")
-//        }, onDisposed: {
-//            print("onDisposed")
-//        }).disposed(by: disposeBag)
-//        
+        self.loadData(id: id)
+            .subscribe(
+            onNext: { (n) in
+                self.view?.showReviews(review: n)
+        }, onError: { (error) in
+            print("-> \(error.localizedDescription)")
+        }, onCompleted: {
+            print(" onCompleted")
+        }, onDisposed: {
+            print("onDisposed")
+        }).disposed(by: disposeBag)
+        
         
     }
     

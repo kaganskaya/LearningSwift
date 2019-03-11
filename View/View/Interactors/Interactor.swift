@@ -34,6 +34,6 @@ protocol NetworkReviewsInteractor: class {
 protocol StorageReviewsInteractor: class {
     
     var  myRepository: Repository! {get set}
-    func saveInStorage(reviews:[Reviews], id:String) -> Observable<Bool>
-    func getFromStorage(isSucLoaded:Bool) -> Observable<[Places]>
+    func saveInStorage(reviews:[Reviews], id:Places) -> Observable<Bool>
+    func getFromStorage(isSucLoaded:Bool,id:Places) -> Observable<[Review]>
 }

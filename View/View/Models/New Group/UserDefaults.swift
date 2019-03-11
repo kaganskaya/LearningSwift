@@ -10,9 +10,14 @@ import Foundation
 
 extension UserDefaults {
     
-    func setIsLoggedIn(value: Bool) {
+    
+    
+    func setIsLoggedIn(value: Bool) -> Bool {
+        
         set(value, forKey: "savedUserSession")
+        
         synchronize()
+        return true
     }
     
     func isLoggedIn() -> Bool {

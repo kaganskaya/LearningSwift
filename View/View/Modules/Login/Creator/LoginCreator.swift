@@ -31,9 +31,15 @@ class LoginCreatorImpl: BaseCreator {
         
         let view = getSelfUIViewController() as! LoginConroller
         
-        let localProvider: LocalProvider  = LocalProvider()
+        let lcu = LocationUtil()
+        
+        let glp = GlobalProvider()
+        
+        let rep  = Repository(util:lcu,glob:glp)
+        
         let presenter = LoginPresenterImpl()
-        let interactor = LoginInteractorImpl(provider: localProvider)
+        
+        let interactor = LoginInteractorImpl(myRepository: rep)
         
         view.presenter = presenter
         

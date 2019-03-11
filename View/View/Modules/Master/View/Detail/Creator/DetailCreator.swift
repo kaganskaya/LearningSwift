@@ -30,7 +30,14 @@ class DetailCreatorImpl: BaseCreator {
     static func assembleModule() -> UIViewController {
         
         let view = getSelfUIViewController() as! DetailViewController
+        let lcu = LocationUtil()
         
+        let glp = GlobalProvider()
+        
+        let rep  = Repository(util:lcu,glob:glp)
+        let storageInteractor = StorageReviewsInteractorInpl(repository: rep)
+        
+        let networkInteractor = NetworkReviewsInteractorImpl(repository: rep)
         let globalProvider: GlobalProvider  = GlobalProvider()
         let presenter = DetailPresenterImpl()
       //  let interactor = DetailInteractorImpl(provider: globalProvider)
@@ -38,7 +45,9 @@ class DetailCreatorImpl: BaseCreator {
         view.presenter = presenter
         
         presenter.view = view
-       // presenter.interactor = interactor
+        presenter.networkReviewsInteractor = networkInteractor
+        
+        presenter.storageReviewsInteractor = storageInteractor
      
     
         

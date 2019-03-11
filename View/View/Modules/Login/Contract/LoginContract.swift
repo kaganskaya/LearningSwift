@@ -16,18 +16,20 @@ protocol LoginPresenter: class {
     var view: LoginView? { get set }
     var interactor: LoginInteractor! { get set }
     func getLoginData()
+    func logIn(username:String,password:String)
     func onViewDidLoad()
 }
 
 protocol LoginInteractor: class {
     
-    var  localProvider: LocalProvider! {get set}
+    var  myRepository: Repository! {get set}
     func getLoginData() -> Observable<MyUser>
-    
+    func logIn(username:String,password:String) -> Observable<Bool>
 }
 
 protocol LoginView: class {
     var presenter: LoginPresenter! { get set }
     func loginData(user:MyUser)
+    func presentMainScreen() 
 }
 

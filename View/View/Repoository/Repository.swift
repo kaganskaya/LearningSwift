@@ -37,13 +37,20 @@ class Repository {
             
        
     }
+    
+    func getReviewsFromBd(isLoaded:Bool,id:Places) -> Observable<[Review]>{
+        return self.localProvider.getReviewsFromBd(isLoaded:isLoaded,id:id)
+        
+        
+    }
+    
     func getReviews(id:String) -> Observable<[Reviews]>{
         return self.globalpr.getReviews(id:id)
         
         
     }
     
-    func saveReviews(reviews:[Reviews],id:String) -> Observable<Bool>{
+    func saveReviews(reviews:[Reviews],id:Places) -> Observable<Bool>{
         return self.localProvider.saveReviewsToBd(reviews:reviews, id:id)
         
     }
@@ -71,8 +78,14 @@ class Repository {
     }
     
     func isLogedIn() -> Observable<Bool>{
-        
         return self.localProvider.logedIn()
     }
     
+    func getLoginData() -> Observable<MyUser> {
+        return self.localProvider.getLoginData()
+    }
+    
+    func setLogIn() -> Observable<Bool>{
+        return self.localProvider.setLogIn()
+    }
 }

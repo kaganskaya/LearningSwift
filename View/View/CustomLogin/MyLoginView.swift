@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import RxCocoa
+import RxSwift
 
 
 @IBDesignable
@@ -24,26 +25,23 @@ class MyLoginView: UIView {
     
     @IBOutlet var myView: UIView!
     
+    @IBOutlet weak var loginButton: UIButton!
     
-    private var user:MyUser = MyUser(username: " ", password: " ")
+    let disposeBag:DisposeBag = DisposeBag()
     
-    private var idx: Int = 0
+    private var userData:MyUser = MyUser(username: " ", password: " ")
+    
+    private var index: Int = 0
     
     let backGroundArray = [UIImage(named: "Image"),UIImage(named:"burg"),UIImage(named:"wog"),UIImage(named:"Shum")]
     
-    var completionHandler:((Bool,String,String) -> Bool)?
-    var compUserName:((String) -> String)?
-    var compPasword:((String) -> String)?
+    var completionHandler:((String,String) -> Void)?
+
     
     @IBAction func logIn(_ sender: Any) {
-        
-       completionHandler?(true,username.text!,pasword.text!)
-//        compUserName?(username.text!)
-//        compPasword?(pasword.text!)
-
+       completionHandler?(username.text!,pasword.text!)
     }
     
-
     
     override func prepareForInterfaceBuilder(){
         super.prepareForInterfaceBuilder()
@@ -53,7 +51,6 @@ class MyLoginView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setup()
     }
     
@@ -62,22 +59,22 @@ class MyLoginView: UIView {
         setup()
     }
     
-    func getData(user:MyUser){
-        
-        self.user = user
+    func setUserData(userData:MyUser){
+        self.userData = userData
     }
     
     func setup() {
         
         let bundle = Bundle(for: MyLoginView.self)
-        bundle.loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)
+            bundle.loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)
         
-        //Bundle.main.loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)
         addSubview(myView)
         myView.frame = self.bounds
         myView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         formView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         self.show()
+        self.subscribeRxChanges()
+        
     }
     
     override var bounds: CGRect{
@@ -89,14 +86,9 @@ class MyLoginView: UIView {
 
     @objc func changeBackground(){
         
-        if idx == backGroundArray.count-1{
-            idx = 0
-        }
-        else{
-            idx+=1
-        }
+        index = backGroundArray.count - 1 == index ? 0 : index + 1
         
-        let toImage = backGroundArray[idx];
+        let toImage = backGroundArray[index];
         
         UIView.transition(with: self.backgrView, duration: 1, options: .transitionCrossDissolve, animations: {self.backgrView.image = toImage}, completion: nil)
         
@@ -136,9 +128,25 @@ class MyLoginView: UIView {
 //    }
     
     func show(){
- 
         setupImage()
     }
 
 
+    private func subscribeRxChanges(){
+
+
+         Observable.combineLatest(username.rx.text, pasword.rx.text)
+            .subscribe(onNext: { (login,pas)  in
+                
+                if((login!.count) > 0 && (pas!.count)>0){
+                        self.loginButton.isEnabled = true
+                        self.loginButton.alpha = 1.0
+                }else{
+                        self.loginButton.isEnabled = false
+                        self.loginButton.alpha = 0.5
+                }
+                
+            }).disposed(by: disposeBag)
+
+    }
 }

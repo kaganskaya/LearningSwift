@@ -25,24 +25,17 @@ class LoginConroller: UIViewController {
       
         presenter.getLoginData()
         
-        loginView.getData(user: self.user)
+        loginView.setUserData(userData: self.user)
         
         loginView.setup()
 
         loginView.completionHandler =
-            { pressed,username,password in
+            { username,password in
                 
-                if pressed && username == "admin" && password == "admin" {
-                    UserDefaults.standard.setIsLoggedIn(value: true)
-                    Router.presentMainScreen(current: self)
-                    
+                if  username == "admin" && password == "admin" {
+                    self.presenter.logIn(username: username,password: password)
                 }
-                
-                return pressed
-                
-        }
-        
-      
+            }
     }
     
     
@@ -52,6 +45,11 @@ class LoginConroller: UIViewController {
     
 }
 extension LoginConroller: LoginView{
+    
+    func presentMainScreen() {
+        Router.presentMainScreen(current: self)
+    }
+    
     func loginData(user: MyUser) {
         self.user = user
     }

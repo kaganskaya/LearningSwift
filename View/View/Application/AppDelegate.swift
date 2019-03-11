@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
      // UserDefaults.standard.set(false, forKey:"savedUserSession")
         Router.presentRootScreen(in: window!)
-       // let container = NSPersistentContainer(name: "Model")
-        //print(container.persistentStoreDescriptions.first?.url)
+        let container = NSPersistentContainer(name: "Model")
+        print(container.persistentStoreDescriptions.first?.url)
         return true
     }
 

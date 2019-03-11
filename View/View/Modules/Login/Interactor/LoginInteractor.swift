@@ -11,18 +11,24 @@ import RxSwift
 import MapKit
 
 class LoginInteractorImpl: LoginInteractor {
-    var localProvider: LocalProvider!
     
-    init(provider: LocalProvider!){
-        self.localProvider = provider
+    
+    
+    var myRepository: Repository!
+    
+    init(myRepository: Repository!){
+        self.myRepository = myRepository
     }
     
     
     func getLoginData() -> Observable<MyUser> {
-        return localProvider!.getLoginData()
+        return myRepository!.getLoginData()
     }
     
     
+    func logIn(username: String, password: String) -> Observable<Bool> {
+        return myRepository.setLogIn()
+    }
     
     
 }

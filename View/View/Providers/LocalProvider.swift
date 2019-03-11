@@ -27,24 +27,58 @@ class LocalProvider {
             result =  saveitem(business: item)
             
         }
-       
+        
         return result
         
     }
     
-    func saveReviewsToBd(reviews: [Reviews], id:String) -> Observable<Bool>{
-        deleteData()
-        var result :Observable<Bool> = Observable.just(false)
-        for item in reviews {
+    
+    
+    func saveReviewsToBd(reviews: [Reviews], id:Places) -> Observable<Bool>{
+        
+        return self.reviewsExict(id: id.id!)
+            .flatMap {
+                exict -> Observable<Bool> in
+                
+                if !exict {
+                    for item in reviews {
+                        return self.saveReview(review: item, id:id)
+                    }
+                }
+                
+                return Observable.just(false)
+        }
+
+    }
+    
+    func getReviewsFromBd(isLoaded:Bool,id:Places) -> Observable<[Review]>{
+        print(isLoaded)
+        
+        return Observable<[Review]>.create { observer -> Disposable in
             
-            result =  saveReview(review: item, id:id)
+            let fetchRequest =  NSFetchRequest<NSFetchRequestResult>(entityName: "Review")
             
+            fetchRequest.predicate = NSPredicate(format: "placeId == %@", id.id!)
+            
+            do {
+                
+                let business  = try self.managedContext.fetch(fetchRequest) as! [Review]
+                
+                observer.onNext(business  )
+                observer.onCompleted()
+                
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+                observer.onError(error)
+            }
+            
+            return Disposables.create(with: {
+            })
         }
         
-        return result
+        
         
     }
-    
     
     func getPlacesFromBd(isLoaded:Bool) -> Observable<[Places]>{
         print(isLoaded)
@@ -91,6 +125,24 @@ class LocalProvider {
         }
         
     }
+//    private func deleteRevData(){
+//
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Review")
+//        fetchRequest.returnsObjectsAsFaults = false
+//
+//        do
+//        {
+//            let results = try managedContext.fetch(fetchRequest)
+//            for managedObject in results
+//            {
+//                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+//                managedContext.delete(managedObjectData)
+//            }
+//        } catch let error as NSError {
+//            print("Detele all my data in error : \(error) \(error.userInfo)")
+//        }
+//
+//    }
     
     private func saveitem(business: Business) -> Observable<Bool>{
         
@@ -99,15 +151,15 @@ class LocalProvider {
             
                 let entity =  NSEntityDescription.entity(forEntityName: "Places",in: managedContext)!
                 
-                let busines = NSManagedObject(entity: entity,insertInto: managedContext)
-                
-                busines.setValue(business.id, forKeyPath: "id")
-                
-                busines.setValue(business.url, forKeyPath: "url")
+                let busines = NSManagedObject(entity: entity,insertInto: managedContext) as! Places
+        
+                    busines.id = business.id
             
-                busines.setValue(business.image_url!, forKeyPath: "image_url")
-                
-                busines.setValue(business.name, forKeyPath: "name")
+                    busines.image_url = business.image_url!
+            
+                    busines.name = business.name
+            
+                    busines.url = business.url
 
                 
                 do {
@@ -127,16 +179,19 @@ class LocalProvider {
 
 
     
-    private func saveReview(review: Reviews, id:String) -> Observable<Bool>{
+    private func saveReview(review: Reviews, id:Places) -> Observable<Bool>{
         
         
         do {
+     
             
             let entity =  NSEntityDescription.entity(forEntityName: "Review",in: managedContext)!
             
-            let busines = NSManagedObject(entity: entity,insertInto: managedContext)
+            let busines = NSManagedObject(entity: entity,insertInto: managedContext) as! Review
             
-            busines.setValue(review.text, forKeyPath: "text")
+            busines.text = review.text
+            
+            busines.placeId = id.id
             
             do {
                 try managedContext.save()
@@ -147,11 +202,13 @@ class LocalProvider {
             }
             
             
+                
+        
             
             
             return Observable.just(false)
             
-        }}
+            }}
     
     
     func setUserData(username:String, password:String){
@@ -194,14 +251,38 @@ class LocalProvider {
         }
 
     }
+    
     func logedIn() ->Observable<Bool>{
-        
-        if UserDefaults.standard.isLoggedIn()
-        {
-            return Observable.just(true)
-        }else{
-            
-            return Observable.just(false)
-        }
+        return Observable.just(UserDefaults.standard.isLoggedIn() ? true : false)
     }
+    
+    func setLogIn() -> Observable<Bool>{
+        return Observable.just(UserDefaults.standard.setIsLoggedIn(value: true))
+    }
+    
+    func reviewsExict(id:String) -> Observable<Bool> {
+        
+        let fetchRequest =  NSFetchRequest<NSFetchRequestResult>(entityName: "Review")
+        
+        fetchRequest.predicate = NSPredicate(format: "placeId == %@", id)
+        
+        var result :Observable<Bool> = Observable.just(false)
+        
+        do {
+            
+            let fetchRes  = try self.managedContext.fetch(fetchRequest) as! [Review]
+            
+            if fetchRes.count == 0{
+                result = Observable.just(false)
+            }else{
+                result = Observable.just(true)
+            }
+            
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        return result
+    }
+    
 }

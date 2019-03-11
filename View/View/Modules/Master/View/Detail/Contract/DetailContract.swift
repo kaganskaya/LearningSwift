@@ -23,7 +23,7 @@ protocol DetailPresenter: class {
     var storageReviewsInteractor: StorageReviewsInteractor! { get set }
 
     func getDescription(link:String)
-    func getDataById(id: String)
+    func getDataById(id: Places)
     func viewDidLoad()
 }
 
@@ -33,7 +33,7 @@ protocol DetailView: class {
     
     func fillImageView(url:String)
     
-    func showReviews(review: [Reviews])
+    func showReviews(review: [Review])
     
     func getDescription(string:String) 
 }

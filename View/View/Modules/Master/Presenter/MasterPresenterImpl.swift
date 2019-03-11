@@ -58,8 +58,7 @@ class MasterPresenterImpl: MasterPresenter {
                       
                             self.view?.showBusiness(business: n)
                     }, onError: { (error) in
-                        //print("-> \(error.localizedDescription)")
-                        //self.view?.showErrorLocation(value: error.localizedDescription)
+                       
                     }, onCompleted: {
                         //print(" onCompleted")
                     }, onDisposed: {
@@ -75,8 +74,7 @@ class MasterPresenterImpl: MasterPresenter {
                 
                 self.view?.showLogin(status: n)
         }, onError: { (error) in
-            //print("-> \(error.localizedDescription)")
-            //self.view?.showErrorLocation(value: error.localizedDescription)
+            
         }, onCompleted: {
             //print(" onCompleted")
         }, onDisposed: {

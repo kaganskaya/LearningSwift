@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="backgrView" destination="78x-pr-vqC" id="gLn-ZY-Vg8"/>
                 <outlet property="formView" destination="6ni-bf-KsI" id="md9-j0-Lqz"/>
+                <outlet property="loginButton" destination="Kg6-zn-kHb" id="xse-0s-SGz"/>
                 <outlet property="myView" destination="iN0-l3-epB" id="HYp-AR-uXX"/>
                 <outlet property="pasword" destination="f46-hO-8i6" id="OW7-7Y-pE8"/>
                 <outlet property="username" destination="gFM-da-aiP" id="HLX-NO-1kJ"/>
@@ -74,7 +75,6 @@
                             </state>
                             <connections>
                                 <action selector="logIn:" destination="-1" eventType="touchUpInside" id="vK9-nE-jTR"/>
-
                             </connections>
                         </button>
                     </subviews>
